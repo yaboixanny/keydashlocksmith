@@ -3,6 +3,15 @@ import os
 import argparse
 import shutil
 
+BASE_CITY = "Orlando"
+BASE_STATE = "FL"
+BASE_PHONE_FORMATTED = "407-468-0026"
+BASE_PHONE_TEL = "407-468-0026"
+BASE_PHONE_E164 = "+14074680026"
+BASE_ZIP = "32801"
+BASE_LAT = "28.5383"
+BASE_LNG = "-81.3792"
+
 def create_landing_page(args):
     # Paths
     base_dir = os.path.dirname(os.path.abspath(__file__))
@@ -15,41 +24,39 @@ def create_landing_page(args):
     
     out_path = os.path.join(output_dir, "index.html")
     
-    # Read the base template (we use the Orlando home page as the base template)
+    # Read the base landing page template.
     with open(source_file, "r", encoding="utf-8") as f:
         content = f.read()
         
     # --- Phone Replacements ---
-    # Convert formats like 413-288-6088 or (413) 288-6088 or +14132886088
-    # Orlando's base phone is 407-468-0026
+    # Convert formats like 413-288-6088 or (413) 288-6088 or +14132886088.
     
-    raw_old_phone = "4074680026"
     raw_new_phone = "".join(filter(str.isdigit, args.phone))
     if len(raw_new_phone) == 10: # Ensure valid US phone
         formatted_new_phone = f"({raw_new_phone[:3]}) {raw_new_phone[3:6]}-{raw_new_phone[6:]}"
         tel_new_phone = f"{raw_new_phone[:3]}-{raw_new_phone[3:6]}-{raw_new_phone[6:]}"
         
-        content = content.replace("407-468-0026", formatted_new_phone)
-        content = content.replace("tel:407-468-0026", f"tel:{tel_new_phone}")
+        content = content.replace(BASE_PHONE_FORMATTED, formatted_new_phone)
+        content = content.replace(f"tel:{BASE_PHONE_TEL}", f"tel:{tel_new_phone}")
         # Clean up double formats if any
         content = content.replace(f"tel:{formatted_new_phone}", f"tel:{tel_new_phone}")
-        content = content.replace("+14074680026", f"+1{raw_new_phone}")
+        content = content.replace(BASE_PHONE_E164, f"+1{raw_new_phone}")
     
     # --- Geography Replacements ---
-    content = content.replace("Orlando", args.city)
-    content = content.replace('"FL"', f'"{args.state.upper()}"')
-    content = content.replace('FL.', f'{args.state.upper()}.')
+    content = content.replace(BASE_CITY, args.city)
+    content = content.replace(f'"{BASE_STATE}"', f'"{args.state.upper()}"')
+    content = content.replace(f'{BASE_STATE}.', f'{args.state.upper()}.')
     
     # Change maps embed strictly
-    content = content.replace("Orlando%2C%20FL", f"{args.city.replace(' ', '%20')}%2C%20{args.state.upper()}")
+    content = content.replace(f"{BASE_CITY}%2C%20{BASE_STATE}", f"{args.city.replace(' ', '%20')}%2C%20{args.state.upper()}")
     
     if args.zip:
-        content = content.replace("32801", args.zip)
+        content = content.replace(BASE_ZIP, args.zip)
         
-    # Example coordinates (Defaults to base if not provided, but maps query fixes itself usually)
+    # Coordinates are optional. If omitted, the map query still updates from the city/state replacement.
     if args.lat and args.lng:
-        content = content.replace("28.5383", str(args.lat))
-        content = content.replace("-81.3792", str(args.lng))
+        content = content.replace(BASE_LAT, str(args.lat))
+        content = content.replace(BASE_LNG, str(args.lng))
         
     # --- Paths Replacements ---
     # Assuming base index.html assets are in root, so when moving to a subfolder we prefix with '../'
