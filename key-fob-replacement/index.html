@@ -57,7 +57,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             border: 1px solid rgba(212, 168, 75, 0.32);
             background: rgba(10, 22, 40, 0.58);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
-            color: var(--accent);
+            color: var(--white);
             font-size: 0.78rem;
             font-weight: 800;
             letter-spacing: 0.05em;
@@ -206,6 +206,41 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             color: rgba(255, 255, 255, 0.72);
             font-size: 1rem;
             line-height: 1.6;
+        }
+
+        .key-fob-hero .hero-google-rating {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-basis: 100%;
+            gap: 7px;
+            color: rgba(255, 255, 255, 0.82);
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 1.6;
+            white-space: nowrap;
+        }
+
+        .key-fob-hero .hero-google-stars {
+            color: #fbbc04;
+            font-size: 0.92em;
+            letter-spacing: 0.04em;
+        }
+
+        .key-fob-hero .hero-google-mark {
+            font-family: Arial, sans-serif;
+            font-size: 1.15em;
+            font-weight: 800;
+            line-height: 1;
+            background: conic-gradient(from -45deg, #4285f4 0deg 88deg, #34a853 88deg 160deg, #fbbc04 160deg 235deg, #ea4335 235deg 312deg, #4285f4 312deg 360deg);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .key-fob-hero .hero-google-rating strong {
+            color: var(--white);
+            font-weight: 800;
         }
 
         .key-fob-hero .hero-trust-row {
@@ -379,6 +414,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             font-size: clamp(1.8rem, 4vw, 2.5rem);
         }
 
+        .key-fob-final-heading {
+            font-size: clamp(2rem, 4vw, 2.6rem) !important;
+            margin-bottom: 40px !important;
+        }
+
         @media (max-width: 768px) {
             .key-fob-hero {
                 min-height: auto;
@@ -520,6 +560,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
             .key-fob-final-cta-button .hero-callout-copy span {
                 font-size: clamp(1.55rem, 7vw, 2.15rem);
+            }
+
+            .key-fob-final-cta-button {
+                flex-direction: column;
+                gap: 10px;
+                padding: 14px 18px;
+            }
+
+            .key-fob-final-cta-button .hero-callout-copy {
+                align-items: center;
+                text-align: center;
+            }
+
+            .key-fob-final-cta-button .hero-callout-copy strong,
+            .key-fob-final-cta-button .hero-callout-copy span {
+                white-space: nowrap;
             }
         }
 
@@ -698,11 +754,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                 </svg>
                             </span>
                             <span class="hero-callout-copy">
-                                <strong>Call now for a free quote</strong>
+                                <strong>Need a key fob? Call now</strong>
                                 <span>(365) 766-9566</span>
                             </span>
                         </a>
-                        <p class="hero-note">Free phone quote and exact ETA before we dispatch. No obligation.</p>
+                        <p class="hero-note">Free phone quote. Exact ETA. No obligation.</p>
+                        <div class="hero-google-rating" aria-label="Rated 5 out of 5 stars on Google">
+                            <span class="hero-google-stars" aria-hidden="true">★★★★★</span>
+                            <span class="hero-google-mark" aria-hidden="true">G</span>
+                            <span><strong>5.0</strong> on Google</span>
+                        </div>
                     </div>
                     <ul class="hero-points">
                         <li>
@@ -887,8 +948,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div style="position: absolute; top: -100px; left: -100px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(212, 168, 75, 0.15) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
                 <div style="position: absolute; bottom: -150px; right: -50px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(212, 168, 75, 0.1) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
                 
-                <h2 style="color: var(--white); position: relative; z-index: 2; line-height: 1.1;">Need Key Fob Replacement in Hamilton Right Now?</h2>
-                <p style="color: rgba(255, 255, 255, 0.85); position: relative; z-index: 2; max-width: 600px; margin: 0 auto 40px auto; font-size: 1.35rem;">Fast local dispatch across Hamilton and nearby areas.</p>
+                <h2 class="key-fob-final-heading" style="color: var(--white); position: relative; z-index: 2; line-height: 1.1;">Need Key Fob Replacement in Hamilton Right Now?</h2>
                 
                 <div style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 24px;">
                     <a href="tel:365-766-9566" onclick="gtag('event', 'conversion', {'send_to': 'AW-18109923415/ufHiCMu3xLYcENeAvrtD'});" class="key-fob-final-cta-button">
