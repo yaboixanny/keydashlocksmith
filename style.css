@@ -333,6 +333,10 @@ h3 {
     letter-spacing: -0.04em;
 }
 
+.landing-hero .car-locksmith-title {
+    font-size: clamp(2.5rem, 5.1vw, 3.85rem);
+}
+
 .landing-highlight {
     color: var(--accent);
 }
