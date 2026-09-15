@@ -334,7 +334,10 @@ h3 {
 }
 
 .landing-hero .car-locksmith-title {
+    margin-right: auto;
+    margin-left: auto;
     font-size: clamp(2.5rem, 5.1vw, 3.85rem);
+    text-align: center;
 }
 
 .landing-highlight {
